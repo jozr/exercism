@@ -1,15 +1,14 @@
-var Words = function() {};
-
-Words.prototype.hey = function(input) {
-  if (input.toLowerCase() != input && input.toUpperCase() === input) {
-    return 'Whoa, chill out!'
-  } else if (input.slice(-1) === '?') {
-    return 'Sure.'
-  } else if (!input.trim()) {
-    return 'Fine. Be that way!'
-  } else {
-    return 'Whatever.'
+var words = function(input) {
+  var inputArr = input.replace(/[\t\n]/g, ' ').split(' ')
+  var result = {}
+  for (var i = 0, len = inputArr.length; i < len; i++) {
+    if (inputArr[i] in result) {
+      result[inputArr[i]] += 1
+    } else {
+      result[inputArr[i]] = 1
+    }
   }
+  return result
 };
 
-module.exports = Words;
+module.exports = words;
