@@ -1,11 +1,12 @@
 var words = function(input) {
-  var inputArr = input.replace(/[\t\n]/g, ' ').split(' ')
+  var singleSpace = input.replace(/ +/g, ' ')
+  var array = singleSpace.replace(/[\t\n]/g, ' ').split(' ')
   var result = {}
-  for (var i = 0, len = inputArr.length; i < len; i++) {
-    if (inputArr[i] in result) {
-      result[inputArr[i]] += 1
+  for (var i = 0, len = array.length; i < len; i++) {
+    if (array[i] in result && !isNaN(result[array[i]])) {
+      result[array[i]] += 1
     } else {
-      result[inputArr[i]] = 1
+      result[array[i]] = 1
     }
   }
   return result
