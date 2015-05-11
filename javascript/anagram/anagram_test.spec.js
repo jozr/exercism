@@ -9,14 +9,14 @@ describe('Anagram', function() {
     expect(matches).toEqual([]);
   });
 
-  xit("detects simple anagram",function() {
+  it("detects simple anagram",function() {
     var subject = anagram("ant");
     var matches = subject.matches(['tan', 'stand', 'at']);
 
     expect(matches).toEqual(['tan']);
   });
 
-  xit("does not detect false positives",function() {
+  it("does not detect false positives",function() {
     var subject = anagram("galea");
     var matches = subject.matches(["eagle"]);
 
