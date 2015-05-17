@@ -3,22 +3,15 @@ var anagram = function(word) { return new Anagram(word); }
 function Anagram(word) { this.word = word.toLowerCase(); };
 
 Anagram.prototype.matches = function(list) {
-  var orderedWord = this.word.split('').sort()
-  var anagram = null
-  var results = []
+  var orderedWord = this.word.toLowerCase().split('').sort();
+  var results = [];
   for (var i = 0; i < list.length; i++) {
-    var orderedCurrent = list[i].split('').sort()
-    for (var j = 0; j < orderedWord.length; j++) {
-      if (orderedWord[j] === orderedCurrent[j]) {
-        anagram = true
-        orderedCurrent.shift(); orderedWord.shift()
-      } else {
-        anagram = false
-      }
+    var orderedCurrent = list[i].toLowerCase().split('').sort();
+    if (orderedWord.join() === orderedCurrent.join()) {
+      results.push(list[i]);
     }
-    if (anagram === true) results.push(list[i])
   }
-  return results
+  return results;
 };
 
 module.exports = anagram;
