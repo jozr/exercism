@@ -1,20 +1,19 @@
 exports.verse = function(verse) {
-  return add_verses_to_result(verse, "");
+  return add_verses_to_result(verse);
 };
 
 exports.verses = function(verse, multi) {
   var result = "";
 
-  for (var i = multi; i > 0; i--) {
-    result = add_verses_to_result(verse, result) + "\n";
-    verse++;
+  for (var i = 1; i < multi + 1; i++) {
+    result += add_verses_to_result(i, "") + "\n";
   };
 
   return result;
 };
 
 var add_verses_to_result = function(verse, result) {
-  result += list()[8]["default"];
+  var result = list()[8]["default"];
 
   for (var i = verse; i > 0; i--) {
     if (verse === i) result += list()[i]["unique"];
