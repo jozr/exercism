@@ -5,7 +5,7 @@ exports.verse = function(verse) {
 exports.verses = function(verse, multi) {
   var result = "";
 
-  for (var i = 1; i < multi + 1; i++) {
+  for (var i = verse; i < multi + 1; i++) {
     result += add_verses_to_result(i, "") + "\n";
   };
 
