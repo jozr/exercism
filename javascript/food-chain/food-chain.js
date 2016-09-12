@@ -1,62 +1,39 @@
 exports.verse = function(verse) {
-  return add_verses_to_result(verse);
+  return upto_verse(verse);
 };
 
-exports.verses = function(verse, multi) {
-  var result = "";
+exports.verses = function(verse, interval) {
+  var result = '';
 
-  for (var i = verse; i < multi + 1; i++) {
-    result += add_verses_to_result(i, "") + "\n";
+  for (var i = verse; i < interval + 1; i++) {
+    result += upto_verse(i) + '\n';
   };
 
   return result;
 };
 
-var add_verses_to_result = function(verse, result) {
-  var result = list()[8]["default"];
+var upto_verse = function(verse) {
+  var result = list()[7][1];
+  var verse = parseInt(verse) - 1;
 
-  for (var i = verse; i > 0; i--) {
-    if (verse === i) result += list()[i]["unique"];
-    if (verse === 8) break;
-    if (verse >= i) result += list()[i]["default"];
+  for (var i = verse; i >= 0; i--) {
+    if (verse === i) result += list()[i][0];
+    if (verse === 7) break;
+    if (verse >= i) result += list()[i][1];
   };
 
   return result;
 };
 
 var list = function() {
- return {
-    "8": {
-      "unique": "horse.\nShe's dead, of course!\n",
-      "default": "I know an old lady who swallowed a "
-    },
-    "7": {
-      "unique": "cow.\nI don't know how she swallowed a cow!\n",
-      "default": "She swallowed the cow to catch the goat.\n"
-    },
-    "6": {
-      "unique": "goat.\nJust opened her throat and swallowed a goat!\n",
-      "default": "She swallowed the goat to catch the dog.\n"
-    },
-    "5": {
-      "unique": "dog.\nWhat a hog, to swallow a dog!\n",
-      "default": "She swallowed the dog to catch the cat.\n"
-    },
-    "4": {
-      "unique": "cat.\nImagine that, to swallow a cat!\n",
-      "default": "She swallowed the cat to catch the bird.\n"
-    },
-    "3": {
-      "unique": "bird.\nHow absurd to swallow a bird!\n",
-      "default": "She swallowed the bird to catch the spider that "
-    },
-    "2": {
-      "unique": "spider.\nIt ",
-      "default": "wriggled and jiggled and tickled inside her.\nShe swallowed the spider to catch the fly.\n"
-    },
-    "1": {
-      "unique": "fly.\n",
-      "default": "I don't know why she swallowed the fly. Perhaps she'll die.\n"
-    }
-  };
+  return [
+    ['fly.\n', 'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n'],
+    ['spider.\nIt ', 'wriggled and jiggled and tickled inside her.\nShe swallowed the spider to catch the fly.\n'],
+    ['bird.\nHow absurd to swallow a bird!\n', 'She swallowed the bird to catch the spider that '],
+    ['cat.\nImagine that, to swallow a cat!\n', 'She swallowed the cat to catch the bird.\n'],
+    ['dog.\nWhat a hog, to swallow a dog!\n', 'She swallowed the dog to catch the cat.\n'],
+    ['goat.\nJust opened her throat and swallowed a goat!\n', 'She swallowed the goat to catch the dog.\n'],
+    ['cow.\nI don\'t know how she swallowed a cow!\n', 'She swallowed the cow to catch the goat.\n'],
+    ['horse.\nShe\'s dead, of course!\n', 'I know an old lady who swallowed a ']
+  ]
 };
